@@ -94,16 +94,6 @@ model = RandomForestRegressor(
 model.fit(X_train, y_train)
 pred_test = model.predict(X_test)
 
-# ================= EVALUATION =================
-MAPE = np.mean(
-    np.abs((y_test - pred_test) / np.clip(y_test, 1e-6, None))
-) * 100
-
-Accuracy = 100 - MAPE
-
-st.subheader("📈 Evaluasi Model")
-st.metric("Accuracy (%)", f"{Accuracy:.2f}")
-
 # ================= INPUT MANUAL =================
 st.subheader("Input Manual Prediksi Tahun Berikutnya")
 
@@ -152,3 +142,4 @@ if st.button("🔮 Prediksi Stunting"):
         st.warning("🟡 Prioritas Sedang")
     else:
         st.error("🔴 Prioritas Tinggi")
+
